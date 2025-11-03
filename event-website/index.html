@@ -8,784 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* Eventix Color Scheme */
-            --primary: #4A2EDD;
-            --primary-dark: #3A1FDD;
-            --primary-light: #6A4EDD;
-            --secondary: #00D4FF;
-            --accent: #FF6B6B;
-            
-            /* Neutral Palette */
-            --white: #FFFFFF;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-300: #D1D5DB;
-            --gray-400: #9CA3AF;
-            --gray-500: #6B7280;
-            --gray-600: #4B5563;
-            --gray-700: #374151;
-            --gray-800: #1F2937;
-            --gray-900: #111827;
-            
-            /* Typography */
-            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            
-            /* Spacing */
-            --space-xs: 4px;
-            --space-sm: 8px;
-            --space-md: 16px;
-            --space-lg: 24px;
-            --space-xl: 32px;
-            --space-2xl: 48px;
-            --space-3xl: 64px;
-            --space-4xl: 96px;
-            --space-5xl: 128px;
-            
-            /* Border Radius */
-            --radius-sm: 6px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-            --radius-2xl: 24px;
-            --radius-full: 9999px;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        body {
-            font-family: var(--font-primary);
-            line-height: 1.6;
-            color: var(--gray-900);
-            background-color: var(--white);
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-200);
-            z-index: 1000;
-            padding: var(--space-md) 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--space-lg);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: var(--space-xl);
-            align-items: center;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--gray-700);
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            font-size: 14px;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
-            padding-top: 80px;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-4xl);
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: var(--space-lg);
-            color: var(--gray-900);
-        }
-
-        .hero-content .tagline {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: var(--space-md);
-        }
-
-        .hero-content .description {
-            font-size: 1.1rem;
-            color: var(--gray-600);
-            margin-bottom: var(--space-xl);
-            line-height: 1.7;
-        }
-
-        .hero-details {
-            display: flex;
-            gap: var(--space-lg);
-            margin-bottom: var(--space-xl);
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: var(--space-md);
-            margin-bottom: var(--space-xl);
-        }
-
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-md);
-            max-width: 400px;
-        }
-
-        .countdown-item {
-            text-align: center;
-            padding: var(--space-md);
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-        }
-
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .countdown-label {
-            font-size: 0.875rem;
-            color: var(--gray-500);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .floating-card {
-            position: absolute;
-            background: var(--white);
-            padding: var(--space-md);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .floating-card-1 {
-            top: 20px;
-            right: -20px;
-        }
-
-        .floating-card-2 {
-            bottom: 40px;
-            left: -20px;
-        }
-
-        .floating-card-3 {
-            top: 50%;
-            right: -30px;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Section Styles */
-        .section {
-            padding: var(--space-5xl) 0;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto var(--space-4xl);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: var(--space-md);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about-section {
-            background: var(--gray-50);
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-4xl);
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: var(--radius-2xl);
-        }
-
-        /* Statistics Section */
-        .stats-section {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            text-align: center;
-        }
-
-        .stats-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: var(--space-xl);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-xl);
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: var(--space-sm);
-        }
-
-        .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Features Section */
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-xl);
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--space-lg);
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: var(--space-md);
-        }
-
-        .feature-card p {
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-
-        /* Schedule Section */
-        .schedule-section {
-            background: var(--gray-50);
-        }
-
-        .schedule-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-        }
-
-        .schedule-tabs {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-2xl);
-        }
-
-        .tab-button {
-            padding: var(--space-sm) var(--space-lg);
-            border: 2px solid var(--primary);
-            background: transparent;
-            color: var(--primary);
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .tab-button.active,
-        .tab-button:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .schedule-day {
-            display: none;
-        }
-
-        .schedule-day.active {
-            display: block;
-        }
-
-        .schedule-item {
-            background: var(--white);
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-md);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: var(--space-lg);
-        }
-
-        .schedule-time {
-            font-weight: 700;
-            color: var(--primary);
-            min-width: 100px;
-        }
-
-        .schedule-content {
-            flex: 1;
-        }
-
-        .schedule-content h4 {
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: var(--space-xs);
-        }
-
-        .schedule-content p {
-            color: var(--gray-600);
-            font-size: 0.875rem;
-        }
-
-        /* Speakers Section */
-        .speakers-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-xl);
-        }
-
-        .speaker-card {
-            background: var(--white);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .speaker-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .speaker-image {
-            width: 150px;
-            height: 150px;
-            border-radius: var(--radius-full);
-            object-fit: cover;
-            margin: 0 auto var(--space-lg);
-            border: 4px solid var(--primary);
-        }
-
-        .speaker-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: var(--space-xs);
-        }
-
-        .speaker-role {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: var(--space-md);
-        }
-
-        .speaker-bio {
-            color: var(--gray-600);
-            line-height: 1.6;
-            margin-bottom: var(--space-lg);
-        }
-
-        /* Tickets Section */
-        .tickets-section {
-            background: var(--gray-50);
-        }
-
-        .pricing-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
-        }
-
-        .pricing-card {
-            background: var(--white);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            position: relative;
-            transition: transform 0.2s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pricing-card.featured {
-            background: var(--primary);
-            color: var(--white);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.special {
-            background: var(--gray-100);
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: var(--white);
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--radius-md);
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .pricing-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-        }
-
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: var(--space-md);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: var(--space-xl);
-        }
-
-        .pricing-features li {
-            padding: var(--space-xs) 0;
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .pricing-features li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .featured .pricing-features li::before {
-            color: var(--secondary);
-        }
-
-        /* Testimonials Section */
-        .testimonials-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-xl);
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-        }
-
-        .testimonial-content {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--gray-700);
-            margin-bottom: var(--space-lg);
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-        }
-
-        .author-image {
-            width: 50px;
-            height: 50px;
-            border-radius: var(--radius-full);
-            object-fit: cover;
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            color: var(--gray-900);
-        }
-
-        .author-info p {
-            color: var(--gray-500);
-            font-size: 0.875rem;
-        }
-
-        /* Gallery Section */
-        .gallery-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-lg);
-            aspect-ratio: 4/3;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--gray-900);
-            color: var(--white);
-            padding: var(--space-4xl) 0 var(--space-xl);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-xl);
-        }
-
-        .footer-section h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: var(--space-lg);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: var(--space-sm);
-        }
-
-        .footer-section ul li a {
-            color: var(--gray-400);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--white);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: var(--space-xl);
-            margin-top: var(--space-xl);
-            border-top: 1px solid var(--gray-700);
-            color: var(--gray-400);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .features-grid,
-            .speakers-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonials-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
-    </style>
+       <!-- Link to external CSS -->
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -811,11 +35,11 @@
                 <h1>Global Tech Summit 2026</h1>
                 <p class="tagline">Shaping the Future of Innovation</p>
                 <p class="description">
-                    Join the premier technology conference bringing together industry leaders, 
-                    innovators, and technologists from around the world. Experience three days 
+                    Join the premier technology conference bringing together industry leaders,
+                    innovators, and technologists from around the world. Experience three days
                     of cutting-edge insights, networking, and inspiration.
                 </p>
-                
+
                 <div class="hero-details">
                     <div class="detail-item">
                         <span>📅</span>
@@ -855,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="hero-image">
                 <img src="../imgs/hero-event.png" alt="Global Tech Summit 2026">
                 <div class="floating-card floating-card-1">
@@ -880,18 +104,18 @@
             <div>
                 <h2 class="section-title">Shaping the Future of Digital Innovation</h2>
                 <p class="section-subtitle">
-                    Global Tech Summit 2026 brings together the brightest minds in technology 
+                    Global Tech Summit 2026 brings together the brightest minds in technology
                     to explore the latest innovations, trends, and breakthroughs shaping our digital future.
                 </p>
                 <br>
                 <p>
-                    Over three intensive days, you'll experience world-class keynotes, hands-on workshops, 
-                    and networking opportunities with industry pioneers. From AI and machine learning to 
+                    Over three intensive days, you'll experience world-class keynotes, hands-on workshops,
+                    and networking opportunities with industry pioneers. From AI and machine learning to
                     sustainable technology and digital transformation, this summit covers it all.
                 </p>
                 <br>
                 <p>
-                    Whether you're a developer, entrepreneur, or tech leader, you'll gain valuable insights, 
+                    Whether you're a developer, entrepreneur, or tech leader, you'll gain valuable insights,
                     forge meaningful connections, and return home with fresh perspectives and actionable strategies.
                 </p>
             </div>
@@ -978,7 +202,7 @@
                 <button class="tab-button" onclick="showDay('day2')">Day 2 - June 16</button>
                 <button class="tab-button" onclick="showDay('day3')">Day 3 - June 17</button>
             </div>
-            
+
             <div id="day1" class="schedule-day active">
                 <div class="schedule-item">
                     <div class="schedule-time">9:00 AM</div>
@@ -1009,7 +233,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="day2" class="schedule-day">
                 <div class="schedule-item">
                     <div class="schedule-time">9:00 AM</div>
@@ -1040,7 +264,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="day3" class="schedule-day">
                 <div class="schedule-item">
                     <div class="schedule-time">9:00 AM</div>
@@ -1086,7 +310,7 @@
                 <h3>Dr. Sarah Chen</h3>
                 <p class="speaker-role">Chief AI Officer, TechVision</p>
                 <p class="speaker-bio">
-                    Leading AI researcher with over 15 years of experience in machine learning 
+                    Leading AI researcher with over 15 years of experience in machine learning
                     and neural networks. Previously worked at Google Brain and Stanford AI Lab.
                 </p>
             </div>
@@ -1095,7 +319,7 @@
                 <h3>Mark Rodriguez</h3>
                 <p class="speaker-role">Senior Cloud Architect, CloudTech</p>
                 <p class="speaker-bio">
-                    Cloud computing expert specializing in microservices architecture and 
+                    Cloud computing expert specializing in microservices architecture and
                     scalable systems. Author of "Modern Cloud Architecture" bestselling book.
                 </p>
             </div>
@@ -1104,7 +328,7 @@
                 <h3>Jennifer Walsh</h3>
                 <p class="speaker-role">Cybersecurity Director, SecureNet</p>
                 <p class="speaker-bio">
-                    Renowned cybersecurity expert who has protected major corporations from 
+                    Renowned cybersecurity expert who has protected major corporations from
                     cyber threats. Regular speaker at security conferences worldwide.
                 </p>
             </div>
@@ -1113,7 +337,7 @@
                 <h3>Michael Kim</h3>
                 <p class="speaker-role">Blockchain Architect, CryptoVault</p>
                 <p class="speaker-bio">
-                    Pioneer in blockchain technology and Web3 development. Built several 
+                    Pioneer in blockchain technology and Web3 development. Built several
                     successful DeFi protocols and NFTs platforms used by millions.
                 </p>
             </div>
@@ -1138,7 +362,7 @@
                 </ul>
                 <a href="#" class="btn btn-primary">Select</a>
             </div>
-            
+
             <div class="pricing-card">
                 <h3 class="pricing-title">Standard Pass</h3>
                 <div class="pricing-price">$399</div>
@@ -1151,7 +375,7 @@
                 </ul>
                 <a href="#" class="btn btn-primary">Select</a>
             </div>
-            
+
             <div class="pricing-card featured">
                 <h3 class="pricing-title">VIP Pass</h3>
                 <div class="pricing-price">$799</div>
@@ -1165,7 +389,7 @@
                 </ul>
                 <a href="#" class="btn btn-secondary">Select</a>
             </div>
-            
+
             <div class="pricing-card special">
                 <h3 class="pricing-title">Student Pass</h3>
                 <div class="pricing-price">$99</div>
@@ -1189,8 +413,8 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-content">
-                    "The Global Tech Summit was absolutely incredible. The quality of speakers, 
-                    the networking opportunities, and the insights I gained have been invaluable 
+                    "The Global Tech Summit was absolutely incredible. The quality of speakers,
+                    the networking opportunities, and the insights I gained have been invaluable
                     for my career. I can't wait for next year!"
                 </div>
                 <div class="testimonial-author">
@@ -1203,8 +427,8 @@
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-content">
-                    "Best tech conference I've ever attended. The workshops were hands-on, 
-                    the speakers were world-class, and I made connections that have already 
+                    "Best tech conference I've ever attended. The workshops were hands-on,
+                    the speakers were world-class, and I made connections that have already
                     led to new business opportunities."
                 </div>
                 <div class="testimonial-author">
@@ -1276,50 +500,7 @@
             <p>&copy; 2025 Global Tech Summit. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Schedule tabs functionality
-        function showDay(dayId) {
-            // Hide all days
-            document.querySelectorAll('.schedule-day').forEach(day => {
-                day.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Show selected day
-            document.getElementById(dayId).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
+    <!-- Link to external JavaScript -->
+    <script src="../js/script.js"></script>
 </body>
 </html>
